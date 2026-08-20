@@ -105,11 +105,11 @@ public class DocumentEntity {
         this.updatedAt = LocalDateTime.now();
     }
 
-    public String getDocumentType() {
+    public DocumentType getDocumentType() {
         return documentType;
     }
 
-    public void setDocumentType(String documentType) {
+    public void setDocumentType(DocumentType documentType) {
         this.documentType = documentType;
         this.updatedAt = LocalDateTime.now();
     }
