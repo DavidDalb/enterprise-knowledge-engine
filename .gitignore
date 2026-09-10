@@ -10,6 +10,16 @@
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
 
+# Build artifacts
+target/   
+
+# IDE Configuration
+.classpath
+.project
+.settings/
+.factorypath
+CONVENTION.md
+
 # Package Files #
 *.jar
 *.war
