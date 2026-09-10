@@ -11,11 +11,14 @@ spring:
     properties:
       hibernate:
         format_sql: true
-
-
+  flyway:
+    enabled: false
+    locations: classpath:db/migration
+    baseline-on-migrate: true
+    logging:
+      level:
+        org.flywaydb: DEBUG
   ai:
-    openai:
-      base-url: https://openrouter.ai/api/v1
+   ollama:
       chat:
-        model: deepseek/deepseek-chat
-      api-key: ${OPENROUTER_API_KEY}
+        temperature: 0.7
