@@ -13,6 +13,11 @@
 # Build artifacts
 target/   
 
+# Ignore temporary META-INF build artifacts
+**/META-INF/*.DSA
+**/META-INF/*.SF
+**/META-INF/*.RSA
+
 # IDE Configuration
 .classpath
 .project
