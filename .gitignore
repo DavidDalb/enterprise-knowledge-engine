@@ -17,6 +17,7 @@ target/
 **/META-INF/*.DSA
 **/META-INF/*.SF
 **/META-INF/*.RSA
+**/META-INF/
 
 # IDE Configuration
 .classpath
