@@ -96,7 +96,11 @@ public class DocumentEntity {
         this.updatedAt = LocalDateTime.now();
     }
 
-    public String getContent() {
+    public void setId(Long id) {
+		this.id = id;
+	}
+
+	public String getContent() {
         return content;
     }
 
