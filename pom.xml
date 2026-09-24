@@ -90,14 +90,12 @@
             <scope>provided</scope>
         </dependency>
 
-        <!-- Spring AI OpenAI Starter -->
-           <dependency>
-                <groupId>org.springframework.ai</groupId>
-                <artifactId>spring-ai-bom</artifactId>
-                <version>${spring-ai.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-    </dependency>
+        <!-- Swagger UI -->
+        <dependency>
+      <groupId>org.springdoc</groupId>
+      <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+      <version>2.7.0</version>
+   </dependency>
 
         <!-- Testing -->
         <dependency>
