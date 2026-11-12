@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>Enterprise Knowledge Engine</title>
+</head>
+<body>
+    <h2>Enterprise Knowledge Engine</h2>
+    <div id="chat" style="height:400px; overflow-y:auto; border:1px solid #ccc; padding:10px;"></div>
+    <form id="f">
+        <input id="msg" size="60" autocomplete="off" placeholder="Chiedi qualcosa...">
+        <button>Invia</button>
+    </form>
+    <script>
+        const chat = document.getElementById('chat');
+
+        function add(text, who) {
+            const p = document.createElement('p');
+            p.textContent = (who === 'me' ? '> ' : 'AI: ') + text;
+            chat.appendChild(p);
+            chat.scrollTop = chat.scrollHeight;
+        }
+
+        document.getElementById('f').onsubmit = async (e) => {
+            e.preventDefault();
+            const input = document.getElementById('msg');
+            const msg = input.value;
+            if (!msg) return;
+            add(msg, 'me');
+            input.value = '';
+            const wait = document.createElement('p');
+            wait.textContent = 'AI sta pensando... (fino a 90 sec)';
+            chat.appendChild(wait);
+            try {
+                const r = await fetch('/api/chat', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ message: msg })
+                });
+                if (!r.ok) { add('ERRORE HTTP ' + r.status, 'ai'); return; }
+                const data = await r.json();
+                add(data.answer || data.response || data.reply || JSON.stringify(data), 'ai');
+            } catch (err) {
+                add('ERRORE JS: ' + err.message, 'ai');
+            } finally {
+                chat.removeChild(wait);
+            }
+        };
+    </script>
+</body>
+</html>
